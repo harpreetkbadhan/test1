@@ -3,7 +3,7 @@ const runtimeCaching = require('next-pwa/cache');
 
 module.exports = {
 
-
+ 
 /*withPWA({
   pwa:{ 
     dest: 'public',
@@ -67,8 +67,9 @@ module.exports = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-
   images: {
+    loader: "imgix",
+    path: "",
     domains: [
       'images.unsplash.com',
       'static.lieferando.de',
