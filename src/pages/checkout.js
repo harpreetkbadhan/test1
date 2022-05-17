@@ -864,7 +864,7 @@ var dd=true;
 
 export default dynamic(() => Promise.resolve(Checkout), { ssr: false });
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps  = async (context) => {
 
 const {query}=context.query;
 const {lat}=context.query;

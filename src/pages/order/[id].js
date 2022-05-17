@@ -94,7 +94,7 @@ const Order =  ({ params }) => {
   );
 };
 
-export const getServerSideProps = ({ params }) => {
+export const getStaticProps  = ({ params }) => {
   return {
     props: { params },
   };
