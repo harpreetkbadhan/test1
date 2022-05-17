@@ -94,10 +94,10 @@ const Order =  ({ params }) => {
   );
 };
 
-export const getStaticProps  = ({ params }) => {
+/*export const getStaticProps  = ({ params }) => {
   return {
     props: { params },
   };
-};
+};*/
 
 export default dynamic(() => Promise.resolve(Order), { ssr: false });
