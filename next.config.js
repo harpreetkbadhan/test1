@@ -69,6 +69,8 @@ module.exports = {
   },
 
   images: {
+    loader: "imgix",
+    path: "",
     domains: [
       'images.unsplash.com',
       'static.lieferando.de',
