@@ -228,7 +228,7 @@ const Search = ({ products, Distance ,loadings,categories }) => {
 
 export default Search;
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps  = async (context) => {
   const { query } = context.query;
   const { Category } = context.query;
   const { category } = context.query;
