@@ -69,21 +69,8 @@ module.exports = {
   },
 
   images: {
-    loader: "imgix",
+    loader: "akamai",
     path: "",
-    domains: [
-      'images.unsplash.com',
-      'static.lieferando.de',
-      'img.icons8.com',
-      'i.ibb.co',
-      'i.postimg.cc',
-      'fakestoreapi.com',
-      'res.cloudinary.com',
-      'lh3.googleusercontent.com',
-      'lms.shop-template.de',
-      'cdn-bchje.nitrocdn.com',
-      'vedis.berlin',
-    ],
   },
 };
 
