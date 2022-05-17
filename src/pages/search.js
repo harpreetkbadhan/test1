@@ -14,7 +14,7 @@ import MapModal from "@component/modal/MapModal";
 import i18next  from "i18next";
 import '../../i18n';
 import { useTranslation } from 'react-i18next';
-const Search = ({ products, Distance ,loadings,categories }) => {
+const Search = () => {
   const { t,i18n } = useTranslation();
   const [visibleProduct, setVisibleProduct] = useState(15);
   const { productData, setSortedField } = useState(products);
@@ -27,10 +27,17 @@ const Search = ({ products, Distance ,loadings,categories }) => {
   var p;
   var today = new Date();
   console.log("tax "+Distance)
-
-
+  var products=[];
+  var Distance=0;
+  var categories=[];
+  var loadings = true;
+  async function get()
+  {
+    var data = await ProductServices.getAllProductsbyId("28");
+    products=data;
+  }
   useEffect(() => {
-
+    get()
     console.log(categories)
   }), [];
   products.map((product, i) => {
@@ -227,7 +234,7 @@ const Search = ({ products, Distance ,loadings,categories }) => {
 };
 
 export default Search;
-
+/*
 export const getServerSideProps  = async (context) => {
   const { query } = context.query;
   const { Category } = context.query;
@@ -304,3 +311,4 @@ Distance=Distance.split('"')[1]
     },
   };
 };
+*/
