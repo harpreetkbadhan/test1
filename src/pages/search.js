@@ -36,6 +36,7 @@ const Search = () => {
     var data = await ProductServices.getAllProductsbyId(28);
     categories= await ProductServices.getCategory();
     products=data;
+    products=JSON.parse(products)
     console.log(products)
     console.log(categories)
   }
