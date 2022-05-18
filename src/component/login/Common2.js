@@ -143,7 +143,7 @@ console.log(Distance)
   });
   
   axios.get('https://maps.googleapis.com/maps/api/distancematrix/json?destinations=' + l  +'%2C' + ln + '+&origins=52.54208%2C13.41142&key=AIzaSyCmwyv5RK77UHqrzc6oxvTVemEMvlcv2wk',{
-    headers: {'Access-Control-Allow-Origin':'*'}
+    headers: {"Access-Control-Allow-Origin":"*","Access-Control-Allow-Origin":"origin, X-Requested-with, Content-TypeError,Accept"}
   })
   .then(response => { 
     console.log(response)
