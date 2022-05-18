@@ -104,7 +104,7 @@ console.log(Distance)
     
 
 
-  /*try {
+  try {
       const response = await fetch(
         "https://maps.googleapis.com/maps/api/distancematrix/json?destinations=" +
         l  +
@@ -134,21 +134,21 @@ console.log(Distance)
     } finally {
       //console.log(json);
       //this.setState({ isLoading: false });
-    }*/
+    }
 
   })
   .catch(error => {
       console.log(error.response)
   });
   
-  axios.get('https://maps.googleapis.com/maps/api/distancematrix/json?destinations=' + l  +'%2C' + ln + '+&origins=52.54208%2C13.41142&key=AIzaSyCmwyv5RK77UHqrzc6oxvTVemEMvlcv2wk')
+  /*axios.get('https://maps.googleapis.com/maps/api/distancematrix/json?destinations=' + l  +'%2C' + ln + '+&origins=52.54208%2C13.41142&key=AIzaSyCmwyv5RK77UHqrzc6oxvTVemEMvlcv2wk')
   .then(response => { 
     console.log(response)
 
   })
   .catch(error => {
       console.log(error.response)
-  });
+  });*/
   /*var datas = await axios.get('https://lms.shop-template.de/data.php', {
     headers: {
       'Access-Control-Allow-Origin':'*', 
