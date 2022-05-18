@@ -14,13 +14,14 @@ import MapModal from "@component/modal/MapModal";
 import i18next  from "i18next";
 import '../../i18n';
 import { useTranslation } from 'react-i18next';
-const Search = ({data}) => {
+const Search = ({data,dataCategory}) => {
   const { t,i18n } = useTranslation();
   const [visibleProduct, setVisibleProduct] = useState(15);
   const { productData, setSortedField } = useState(products);
   const { loading, setloading } = useState(false);
   const [modalOpen, setModalOpen] = useState(true);
   const [productNew, setProductNew] = useState([]);
+  const [CatgoriesNew, setCatgoriesNew] = useState([]);
   var y = { name: "gshsd" };
   //console.log(products)
   var text=['w','o','o','f','o','o','d','_','max','_','delivery','_','distance']
@@ -31,23 +32,22 @@ const Search = ({data}) => {
   var Distance=0;
   var categories=[];
   var loadings = true;
-  async function get()
-  {
-    var data = await ProductServices.getAllProductsbyId(28);
-    categories= await ProductServices.getCategory();
-    setProductNew(data);
-   // products=JSON.parse(products)
-    console.log(products)
-    //console.log(categories)
-  }
+ 
   useEffect(() => {
    if(data)
    {
      setProductNew(data)
    }
+   if(dataCategory)
+   {
+   
+    setCatgoriesNew(dataCategory)
+    console.log(CatgoriesNew)
+   }
+
   }), [];
   products.map((product, i) => {
-    var pp = product.categories;
+    var pp = product.CatgoriesNew;
     pp.map((categ, i) => {
       //console.log(categ.name)
       p = categ.name;
@@ -55,7 +55,7 @@ const Search = ({data}) => {
   });
   console.log(p);
   return (
-    <Layout title="Search" description="This is search page" categories={categories}>
+    <Layout title="Search" description="This is search page" categories={CatgoriesNew}>
       <MapModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-10">
         <StickyCart />
@@ -69,7 +69,7 @@ const Search = ({data}) => {
                 <h2 className="font-serif text-lg pb-2 font-medium">
                
                 </h2>
-                <Category categories={categories} />
+                <Category categories={CatgoriesNew} />
               </div>
             </div>
             <div className="w-full">
@@ -242,9 +242,11 @@ const Search = ({data}) => {
 export default Search;
 export async function getStaticProps(context) {
   var data = await ProductServices.getAllProductsbyId(28);
-  console.log(data)
-  return {
-    props: {data}, // will be passed to the page component as props
+  var dataCategory = await ProductServices.getCategory();
+  
+    return {
+    props: {data,
+      dataCategory}, // will be passed to the page component as props
   }
 }
 
