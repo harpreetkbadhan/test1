@@ -101,7 +101,21 @@ Distance=Distance.split('"')[1]
 Distance=Distance*1000
 console.log(Distance)
     console.log(l + " test "+ln );
+
     
+    console.log("---------Test00000----------")
+  
+    axios.get('https://maps.googleapis.com/maps/api/distancematrix/json?destinations=' + l  +'%2C' + ln + '+&origins=52.54208%2C13.41142&key=AIzaSyCmwyv5RK77UHqrzc6oxvTVemEMvlcv2wk',{
+      headers: {"Access-Control-Allow-Origin":"*","Access-Control-Allow-Origin":"origin, X-Requested-with, Content-TypeError,Accept"}
+    })
+    .then(response => { 
+      console.log(response)
+      console.log("---------Test00000----------")
+  
+    })
+    .catch(error => {
+        console.log(error)
+    });
 
 
  /*
@@ -142,19 +156,7 @@ console.log(Distance)
       console.log(error.response)
   });
   
-  console.log("---------Test00000----------")
   
-  axios.get('https://maps.googleapis.com/maps/api/distancematrix/json?destinations=' + l  +'%2C' + ln + '+&origins=52.54208%2C13.41142&key=AIzaSyCmwyv5RK77UHqrzc6oxvTVemEMvlcv2wk',{
-    headers: {"Access-Control-Allow-Origin":"*","Access-Control-Allow-Origin":"origin, X-Requested-with, Content-TypeError,Accept"}
-  })
-  .then(response => { 
-    console.log(response)
-    console.log("---------Test00000----------")
-
-  })
-  .catch(error => {
-      console.log(error)
-  });
   /*var datas = await axios.get('https://lms.shop-template.de/data.php', {
     headers: {
       'Access-Control-Allow-Origin':'*', 
