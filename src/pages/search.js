@@ -33,8 +33,11 @@ const Search = () => {
   var loadings = true;
   async function get()
   {
-    var data = await ProductServices.getAllProductsbyId("28");
+    var data = await ProductServices.getAllProductsbyId(28);
+    categories= await ProductServices.getCategory();
     products=data;
+    console.log(products)
+    console.log(categories)
   }
   useEffect(() => {
     get()
