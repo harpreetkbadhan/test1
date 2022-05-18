@@ -12,17 +12,27 @@ import CategoryServices from '@services/CategoryServices';
 import CategoryCard from '@component/category/CategoryCard';
 import ProductServices from "@services/ProductServices";
 import axios from 'axios';
+import { collapseTextChangeRangesAcrossMultipleVersions, convertTypeAcquisitionFromJson } from 'typescript';
 const Category = ({categories}) => {
   const { categoryDrawerOpen, closeCategoryDrawer } =
     useContext(SidebarContext);
  //const { data, loading, error } = useAsync();
-  const [data,setdata]=useState(categories);
+  const [data,setdata]=useState([]);
   const [error,seterror]=useState();
   const [loading,setloading]=useState(true);
-  if(categories==undefined)
-  {
-  setdata([])
-  }
+  console.log("-------------cat--------")
+  console.log(categories)
+  useEffect(() => {
+    if(categories==undefined)
+    {
+    setdata([])
+    }
+    else{
+      setdata(categories)
+      console.log("===========================data-================")
+    }
+   }), [];
+  
   
   return (
     <div className="flex flex-col w-full h-full bg-white cursor-pointer scrollbar-hide rounded-lg ">
