@@ -20,7 +20,7 @@ const Search = () => {
   const { productData, setSortedField } = useState(products);
   const { loading, setloading } = useState(false);
   const [modalOpen, setModalOpen] = useState(true);
-  
+  const [productNew, setProductNew] = useState([]);
   var y = { name: "gshsd" };
   //console.log(products)
   var text=['w','o','o','f','o','o','d','_','max','_','delivery','_','distance']
@@ -35,10 +35,10 @@ const Search = () => {
   {
     var data = await ProductServices.getAllProductsbyId(28);
     categories= await ProductServices.getCategory();
-    products=data;
-    products=JSON.parse(products)
+    setProductNew(data);
+   // products=JSON.parse(products)
     console.log(products)
-    console.log(categories)
+    //console.log(categories)
   }
   useEffect(() => {
     get()
@@ -71,7 +71,7 @@ const Search = () => {
               </div>
             </div>
             <div className="w-full">
-              {products.length === 0 ? (
+              {productNew.length === 0 ? (
                 <div className="text-center align-middle mx-auto p-5 my-5">
                   <Image
                     className="my-4"
@@ -110,16 +110,16 @@ const Search = () => {
               </span>*/}
                 </div>
               )}
-              {!products.length === 0 ? (
+              {!productNew.length === 0 ? (
                 <Loading loading={loading} />
               ) : (
                 <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-4 gap-2 md:gap-3 lg:gap-3">
-                  {products?.slice(0, visibleProduct).map((product, i) => (
+                  {productNew?.slice(0, visibleProduct).map((product, i) => (
                     <ProductCard key={i + 1} product={product} />
                   ))}
                 </div>
               )}
-              {products.length > visibleProduct && (
+              {productNew.length > visibleProduct && (
                 <button
                   onClick={() => setVisibleProduct((pre) => pre + 10)}
                   className="w-auto mx-auto md:text-sm leading-5 flex items-center transition ease-in-out duration-300 font-medium text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none bg-indigo-100 text-gray-700 px-5 md:px-6 lg:px-8 py-2 md:py-3 lg:py-3 hover:text-white hover:bg-green-600 h-12 mt-6 text-sm lg:text-sm"
