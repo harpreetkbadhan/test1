@@ -14,7 +14,7 @@ import MapModal from "@component/modal/MapModal";
 import i18next  from "i18next";
 import '../../i18n';
 import { useTranslation } from 'react-i18next';
-const Search = () => {
+const Search = ({data}) => {
   const { t,i18n } = useTranslation();
   const [visibleProduct, setVisibleProduct] = useState(15);
   const { productData, setSortedField } = useState(products);
@@ -41,8 +41,10 @@ const Search = () => {
     //console.log(categories)
   }
   useEffect(() => {
-    get()
-    console.log(categories)
+   if(data)
+   {
+     setProductNew(data)
+   }
   }), [];
   products.map((product, i) => {
     var pp = product.categories;
@@ -238,6 +240,16 @@ const Search = () => {
 };
 
 export default Search;
+export async function getStaticProps(context) {
+  var data = await ProductServices.getAllProductsbyId(28);
+  console.log(data)
+  return {
+    props: {data}, // will be passed to the page component as props
+  }
+}
+
+
+
 /*
 export const getServerSideProps  = async (context) => {
   const { query } = context.query;
